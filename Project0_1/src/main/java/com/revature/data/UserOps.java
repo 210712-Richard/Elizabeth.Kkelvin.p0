@@ -18,51 +18,35 @@ public class UserOps {
 		// Helper for myself. If no users exist in the users.dat file (first startup) than I should create a few
 		if(users == null) {
 			users = new ArrayList<UserDef>();
-			UserDef u = new UserDef(users.size(), "eliana", "eliana@gmail.com", LocalDate.of(2021, 4, 18), UserType.ADMIN, "checkin", 0.0);
-			//u.setType(UserType.ADMIN);
+			users.add(new UserDef(users.size(), "Alby", "alby@alby.alby", LocalDate.of(1900, 1, 1), 1000l));
+			users.add(new UserDef(users.size(), "William", "will@will.will", LocalDate.of(1950, 5, 1), 3000l));
+			users.add(new UserDef(users.size(), "Jaclyn", "jaclyn@jaclyn.jaclyn", LocalDate.of(2021, 1, 1), 2000l));
+			UserDef u = new UserDef(users.size(), "richard", "richard.orr@revature.com", LocalDate.of(1900, 1, 1), 1000l);
+			u.setType(UserType.ADMIN);
 			users.add(u);
 		}
 	}
 	
-	public UserDef getUser(String name) {
+	public UserDef getUser(String username) {
+		
 		for(UserDef user : users) {
-			if(user.getUsername().equals(name)) {
+			if(user.getUsername().equals(username)) {
 				return user;
 			}
 		}
+		
 		return null;
 	}
-	
-	public UserDef setUser(String username, String email, LocalDate birthday, UserType userType, String AccType, Double Bal) {
-
-		UserDef u = new UserDef(users.size(), username, email, birthday, userType, null, 0.0);
+    // id , username, email, bday, currancy 
+	public UserDef SetUser(String username, String email) {
+		UserDef u = new UserDef(users.size(), username, email, LocalDate.of(1900, 1, 1), 1000l);
+		u.setType(UserType.CUSTOMER);
 		users.add(u);
         this.writeToFile();
-		return u;
-	}
-	
-	public UserDef modAccnt(UserDef u, String AccType) {
-		u.setAccntType(AccType);
-		users.add(u);
-        this.writeToFile();
-		return u;
-	}
-
-	public UserDef modBalance(UserDef u, Double Bal) {
-				
-		if (Bal > 0) {
-			u.setBalance(Bal);
-		}
-		else {
-			u.setBalance(0.0);
-		}
-		users.add(u);
-        this.writeToFile();
-		return u;
+		return null;
 	}
 	
 	public void writeToFile() {
 		new DataSerializer<UserDef>().writeObjectsToFile(users, "users.dat");
 	}
-
 }

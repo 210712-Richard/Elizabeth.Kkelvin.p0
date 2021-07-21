@@ -1,4 +1,5 @@
 package com.revature.userdef;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,24 +10,23 @@ public class UserDef implements Serializable {
 	private String username;
 	private String email;
 	private LocalDate birthday;
-	private UserType userType;
-	private String AccntType;
-	private Double Balance;
+	private UserType type;
+	private Long currency;
 	
 	public UserDef() {
 		super();
-	}
-	public UserDef(Integer id, String username, String email, LocalDate birthday, UserType userType, String AccntType, Double Balance) {
-		this();
-		this.id       = id;
-		this.email    = email;
-		this.username = username;
-		this.birthday = birthday;
-		this.userType = userType;
-		this.AccntType= AccntType;
-		this.Balance  = Balance; 
+		this.type = UserType.CUSTOMER;
 	}
 	
+	public UserDef(Integer id, String username, String email, LocalDate birthday, Long currency) {
+		this();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.birthday = birthday;
+		this.currency = currency;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -52,33 +52,27 @@ public class UserDef implements Serializable {
 		this.birthday = birthday;
 	}
 	public UserType getType() {
-		return userType;
+		return type;
 	}
 	public void setType(UserType type) {
-		this.userType = type;
+		this.type = type;
 	}
-	public String getAccntType() {
-		return AccntType;
+	public Long getCurrency() {
+		return currency;
 	}
-	public void setAccntType(String AccntType) {
-		this.AccntType = AccntType;
-	}
-	public Double getBalance() {
-		return Balance;
-	}
-	public void setBalance(Double Balance) {
-		this.Balance = Balance;
+	public void setCurrency(Long currency) {
+		this.currency = currency;
 	}
 
-	/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
+		result = prime * result + ((currency == null) ? 0 : currency.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -97,6 +91,11 @@ public class UserDef implements Serializable {
 				return false;
 		} else if (!birthday.equals(other.birthday))
 			return false;
+		if (currency == null) {
+			if (other.currency != null)
+				return false;
+		} else if (!currency.equals(other.currency))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -107,7 +106,7 @@ public class UserDef implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (userType != other.userType)
+		if (type != other.type)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -120,9 +119,6 @@ public class UserDef implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", birthday=" + birthday + ", type="
-				+ userType + "]";
+				+ type + ", currency=" + currency + "]";
 	}
-	
-*/
-	
 }
