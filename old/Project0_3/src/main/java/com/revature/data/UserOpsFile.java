@@ -17,10 +17,11 @@ public class UserOpsFile implements UserOps{
 			DataSerializer<UserDef> ds = new DataSerializer<UserDef>();
 			users = ds.readObjectsFromFile("users1.dat");
 			
-			// If no users exist in the users.dat file (first startup) than I should create a few
+			// Helper for myself. If no users exist in the users.dat file (first startup) than I should create a few
 			if(users == null) {
 				users = new ArrayList<UserDef>();
 				UserDef u = new UserDef(users.size(), "eliana", "eliana@gmail.com", LocalDate.of(2021, 4, 18), UserType.ADMIN, "checkin", 0.0);
+				//u.setType(UserType.ADMIN);
 				users.add(u);
 			}
 		}
@@ -35,6 +36,7 @@ public class UserOpsFile implements UserOps{
 		}
 		
 		public UserDef setUser(String username, String email, LocalDate birthday, UserType userType, String AccType, Double Bal) {
+
 			UserDef u = new UserDef(users.size(), username, email, birthday, userType, null, 0.0);
 			users.add(u);
 	        this.writeToFile();

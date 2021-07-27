@@ -14,8 +14,9 @@ import com.revature.factory1.Log;
 @Log
 public class ServiceImpt implements Service {
 		private Logger log = LogManager.getLogger(ServiceImpt.class);
-		public UserOps uop = (UserOps) BeanFactory.getFactory1().get(UserOps.class, UserOpsFile.class);
+		public UserOps ud = (UserOps) BeanFactory.getFactory1().get(UserOps.class, UserOpsFile.class);
 
+		private UserOpsFile uop = new UserOpsFile();
 		
 		public UserDef login(String name) {
 			UserDef u = uop.getUser(name);

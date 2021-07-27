@@ -1,6 +1,7 @@
 package com.revature.userdef;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class UserDef implements Serializable {
 	// literally only created the UID to get rid of the warning, and it doesn't matter at all.
@@ -10,21 +11,21 @@ public class UserDef implements Serializable {
 	private String email;
 	private LocalDate birthday;
 	private UserType userType;
-	private String AccntType;
-	private Double Balance;
+	private String accntType;
+	private Double balance;
 	
 	public UserDef() {
 		super();
 	}
-	public UserDef(Integer id, String username, String email, LocalDate birthday, UserType userType, String AccntType, Double Balance) {
+	public UserDef(Integer id, String username, String email, LocalDate birthday, UserType userType, String AccntType, Double balance) {
 		this();
 		this.id       = id;
 		this.email    = email;
 		this.username = username;
 		this.birthday = birthday;
 		this.userType = userType;
-		this.AccntType= AccntType;
-		this.Balance  = Balance; 
+		this.accntType= AccntType;
+		this.balance  = balance; 
 	}
 	
 	public Integer getId() {
@@ -54,35 +55,25 @@ public class UserDef implements Serializable {
 	public UserType getType() {
 		return userType;
 	}
-	public void setType(UserType type) {
-		this.userType = type;
+	public void setType(UserType userType) {
+		this.userType = userType;
 	}
 	public String getAccntType() {
-		return AccntType;
+		return accntType;
 	}
 	public void setAccntType(String AccntType) {
-		this.AccntType = AccntType;
+		this.accntType = AccntType;
 	}
 	public Double getBalance() {
-		return Balance;
+		return balance;
 	}
-	public void setBalance(Double Balance) {
-		this.Balance = Balance;
+	public void setBalance(Double balance) {
+		this.balance = balance;
 	}
-
-	/*
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
+		return Objects.hash(accntType, balance, birthday, email, id, userType, username);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -92,37 +83,17 @@ public class UserDef implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDef other = (UserDef) obj;
-		if (birthday == null) {
-			if (other.birthday != null)
-				return false;
-		} else if (!birthday.equals(other.birthday))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (userType != other.userType)
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
+		return Objects.equals(accntType, other.accntType) && Objects.equals(balance, other.balance)
+				&& Objects.equals(birthday, other.birthday) && Objects.equals(email, other.email)
+				&& Objects.equals(id, other.id) && userType == other.userType
+				&& Objects.equals(username, other.username);
 	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", birthday=" + birthday + ", type="
-				+ userType + "]";
+		return "UserDef [id=" + id + ", username=" + username + ", email=" + email + ", birthday=" + birthday
+				+ ", userType=" + userType + ", accntType=" + accntType + ", balance=" + balance + "]";
 	}
+
 	
-*/
 	
 }

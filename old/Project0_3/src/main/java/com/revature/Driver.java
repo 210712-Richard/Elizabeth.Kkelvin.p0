@@ -10,7 +10,7 @@ import io.javalin.Javalin;
 import io.javalin.plugin.json.JavalinJackson;
 
 public class Driver {
-	public  static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		ObjectMapper jackson = new ObjectMapper();
 		jackson.registerModule(new JavaTimeModule());
@@ -21,12 +21,20 @@ public class Driver {
 		UserApiSetup uc = (UserApiSetup) BeanFactory.getFactory1().get(UserApiSetup.class, UserApiSetupImpt.class);
 		
 		app.get("/", (ctx)->ctx.html("Bank of US"));
-		app.post("/users", uc::login);	
-		app.put("/users/:username", uc::register);		
-		app.delete("/users", uc::logout);		
-		app.post("/users/:username/:deposit", uc::deposit);		
-		app.put("/users/:username/:withdraw", uc::withdraw);		
+		
+		app.post("/users", uc::login);
+		
+		app.put("/users/:username", uc::register);
+		
+		app.delete("/users", uc::logout);
+		
+		app.put("/users/:username/deposit", uc::deposit);
+		
+		app.get("/users/:username/withdraw", uc::withdraw);
+		
 		app.get("/users/:username/balance", uc::balance);
+		
 	
-	}
+	
+}
 }

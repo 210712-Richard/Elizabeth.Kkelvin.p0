@@ -11,10 +11,9 @@ public interface UserOps {
 
 	UserDef setUser(String username, String email, LocalDate birthday, UserType userType, String AccType, Double Ba);
 
+	//List<UserDef> getUsers();
+
 	UserDef getUser(String username);
 
-	UserDef modAccnt(UserDef u, String AccType);
-	
-	UserDef modBalance(UserDef u, Double Bal);
 
 }

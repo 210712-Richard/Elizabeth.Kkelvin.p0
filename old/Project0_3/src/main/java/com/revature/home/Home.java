@@ -1,4 +1,4 @@
-/*package com.revature.home;
+package com.revature.home;
 import java.time.LocalDate;
 import java.util.Scanner;
 import com.revature.userdef.UserDef;
@@ -140,7 +140,7 @@ public class Home {
 		
 	}*/
 
-	/*public int startMenu() {
+	public int startMenu() {
 		//log
 		System.out.println("What would you like to do?");
 		System.out.println("\t1. Login");
@@ -222,7 +222,7 @@ public class Home {
 			}
 		}
 	}
-}*/
+}
 
 
 	
