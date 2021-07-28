@@ -15,12 +15,19 @@ Customer Functionality
 
 * Login
 * Register
-* Create savings account and Deposit.
+* Create account
+* Deposit
+* Withdraw
+* View Balance
 * Logout
 
 
-Admin Functionality
+Admin
+  
 * Login
 * Register
-* Delete or Add Customer.
+* Create account
+* Deposit
+* Withdraw
+* View Balance
 * Logout
